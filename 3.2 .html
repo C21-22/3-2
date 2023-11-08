@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript і DOM</title>
+    <style>
+        .highlighted {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="mainHeading">Привіт, це заголовок</h1>
+    <p class="highlighted">Це абзац з класом "highlighted".</p>
+    <ul>
+        <li>Елемент списку 1</li>
+        <li>Елемент списку 2</li>
+        <li>Елемент списку 3</li>
+    </ul>
+    <a href="#" id="myLink">Це посилання</a>
+
+    <script>
+        // Задача 1: Змінити стилі та текст
+        var mainHeading = document.getElementById('mainHeading'); // Отримує елемент з id "mainHeading" та зберігає його в змінну mainHeading
+        mainHeading.style.color = 'blue'; // Змінює колір тексту заголовку на синій
+
+        var highlightedParagraph = document.querySelector('.highlighted'); // Отримує елемент з класом "highlighted" та зберігає його в змінну highlightedParagraph
+        highlightedParagraph.textContent = 'Текст змінено'; // Змінює текст абзацу на "Текст змінено"
+
+        // Задача 2: Навігація по DOM
+        var ulElement = document.querySelector('ul'); // Отримує перший елемент <ul> та зберігає його в змінну ulElement
+        console.log('Батьківський елемент для списку: ', ulElement.parentElement); // Виводить батьківський елемент для списку в консоль
+
+        var listItems = ulElement.querySelectorAll('li'); // Отримує всі елементи <li> в списку та зберігає їх в змінну listItems
+        listItems.forEach(function(item, index) {
+            console.log('Дочірній елемент ' + (index + 1) + ': ', item); // Виводить кожен дочірній елемент в консоль
+        });
+
+        // Задача 3: Додати обробник подій
+        var myLink = document.getElementById('myLink'); // Отримує елемент з id "myLink" та зберігає його в змінну myLink
+        myLink.addEventListener('click', function(event) {
+            event.preventDefault(); // Запобігає стандартній дії посилання (перехід на іншу сторінку)
+            alert('Ви натиснули посилання!'); // Виводить сповіщення про натискання посилання
+        });
+    </script>
+</body>
+</html>
